@@ -11,6 +11,9 @@ describe Question do
   it 'has content' do
     expect(@question.content).to eq "how?"
   end
+  it 'should have many answers' do
+    should have_many(:answers)
+  end
 
   after(:each) do
     @question = nil

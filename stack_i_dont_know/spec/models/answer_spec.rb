@@ -1,5 +1,21 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Answer, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Answer do
+  before(:each) do
+    @answer = Answer.new(title: "this", content: "that")
+  end
+  it 'has a title' do
+    expect(@answer.title).to eq "this"
+  end
+  it 'has content' do
+    expect(@answer.content).to eq "that"
+  end
+  it 'belongs to a question' do
+    should belong_to :question
+  end
+
+  after(:each) do
+    @answer = nil
+  end
 end
