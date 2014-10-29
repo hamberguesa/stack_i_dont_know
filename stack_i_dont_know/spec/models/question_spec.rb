@@ -14,6 +14,12 @@ describe Question do
   it 'should have many answers' do
     should have_many(:answers)
   end
+  it 'validates title exists' do
+    should validate_presence_of(:title)
+  end
+  it 'validates content exists' do
+    should validate_presence_of(:content)
+  end
 
   after(:each) do
     @question = nil
