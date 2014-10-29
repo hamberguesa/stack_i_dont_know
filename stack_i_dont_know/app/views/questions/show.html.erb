@@ -1,5 +1,10 @@
 <h2>Question:</h2>
 <h3><%= @question.title %></h3>
-<%= @question.content %>
+<%= @question.content %><br><br>
+
+<div>
+  <%= link_to "Answer This Question", new_question_answer_path(:question_id => @question.id) %>
+</div>
+
 <h2>Answers:</h2>
 <%= render @question.answers %>

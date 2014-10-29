@@ -1,0 +1,18 @@
+<h2>Add an Answer</h2>
+
+<%= form_for :answer, url: question_answers_path do |f| %>
+<p>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+</p>
+
+<p>
+  <%= f.label :content %>
+  <%= f.text_area :content %><br>
+</p>
+
+<p>
+  <%= f.submit "Submit" %>
+</p>
+<% end %>
+
