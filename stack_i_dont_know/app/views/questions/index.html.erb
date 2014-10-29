@@ -3,8 +3,10 @@
     <th>Title</th>
     <th>Content</th>
   <% @questions.each do |question| %>
-    <td> <%= question.title %> </td>
-    <td> <%= question.content %> </td>
+    <tr>
+      <td> <%= question.title %> </td>
+      <td> <%= question.content %> </td>
+    </tr>
   <% end %>
   </table>
 </div>

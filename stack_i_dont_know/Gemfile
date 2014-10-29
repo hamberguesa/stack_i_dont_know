@@ -42,4 +42,5 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'shoulda-matchers'
 gem 'factory_girl'
+gem 'faker'
 
