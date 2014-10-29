@@ -1,10 +1,10 @@
-<h2>New Question</h2>
+<h2>Edit Question</h2>
 
-<%= form_for :question, url: questions_path do |f| %>
+<%= form_for :question, url: question_path(@question), method: :patch do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@question.errors.count, "error") %> prohibited
-        this question from being created:</h4>
+        this question from being updated:</h4>
       <ul>
       <% @question.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -22,7 +22,6 @@
     <%= f.text_area :content %>
   </p>
   <p>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Update" %>
   </p>
 <% end %>
-
