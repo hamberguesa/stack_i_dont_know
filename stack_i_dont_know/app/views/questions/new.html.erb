@@ -1,0 +1,28 @@
+<h2>New Question</h2>
+
+<%= form_for :question, url: questions_path do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@question.errors.count, "error") %> prohibited
+        this question from being created:</h4>
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+
