@@ -10,5 +10,5 @@
 
 <h2>Answers:</h2>
 <table>
-  <%= render @question.answers %>
+  <%= render @question.answers.order(votes: :desc) %>
 </table>
