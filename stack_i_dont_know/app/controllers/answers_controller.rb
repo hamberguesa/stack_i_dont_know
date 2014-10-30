@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
   
   def upvote
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.find(params[:id])
+    @answer = Answer.find(params[:id])
     @answer.increment!(:votes)
     
     redirect_to @question
@@ -23,7 +23,7 @@ class AnswersController < ApplicationController
   
   def downvote
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.find(params[:id])
+    @answer = Answer.find(params[:id])
     @answer.decrement!(:votes)
     
     redirect_to @question
