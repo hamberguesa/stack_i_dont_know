@@ -11,10 +11,14 @@ class QuestionsController < ApplicationController
   def create
     @questions = Question.order(votes: :desc)
     @question = Question.new(question_params)
-    if @question.save
-      redirect_to @question
-    else
-      render 'index'
+    respond_to do |request_format|
+      if @question.save
+        request_format.html { redirect_to @question }
+        request_format.js   {}
+      else
+        request_format.html   { render 'index' }
+        request_format.js   { render 'error.js.erb' }
+      end
     end
   end
 
