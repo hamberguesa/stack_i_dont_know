@@ -1,15 +1,15 @@
 class AnswersController < ApplicationController
-  def new
-    @answer = Answer.new
-  end
-
   def create
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.create(answer_params)
-    if @answer.save
-      redirect_to @question
-    else
-      render 'new'
+    @answer = @question.answers.new(answer_params)
+    respond_to do |request_format|
+      if @answer.save
+        request_format.html { redirect_to @question }
+        request_format.js {}
+      else
+        request_format.html { redirect_to @question }
+        request_format.js { render 'error.js.erb' }
+      end
     end
   end
   

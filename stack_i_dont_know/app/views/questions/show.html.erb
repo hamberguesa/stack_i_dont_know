@@ -5,10 +5,13 @@
 <div>
   <%= link_to "Answer This Question", new_question_answer_path(:question_id => @question.id) %> <br>
   <%= link_to "Delete This Question", question_path(@question), method: :delete, data: { confirm: 'Are you sure?' } %>
-
 </div>
 
 <h2>Answers:</h2>
 <table>
   <%= render @question.answers.order(votes: :desc) %>
 </table>
+
+<div>
+  <%= render "answers/form" %>
+</div>
