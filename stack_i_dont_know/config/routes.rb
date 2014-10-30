@@ -6,7 +6,12 @@ Rails.application.routes.draw do
       patch 'upvote'
       patch 'downvote'
     end
-    resources :answers
+    resources :answers do
+      member do
+        patch 'upvote'
+        patch 'downvote'
+      end
+    end
   end
   # You can have the root of your site routed with "root"
   root 'questions#index'

@@ -12,8 +12,25 @@ class AnswersController < ApplicationController
       render 'new'
     end
   end
+  
+  def upvote
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    @answer.increment!(:votes)
+    
+    redirect_to @question
+  end
+  
+  def downvote
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    @answer.decrement!(:votes)
+    
+    redirect_to @question
+  end
 
   private
+  
   def answer_params
     params.require(:answer).permit(:title, :content)
   end

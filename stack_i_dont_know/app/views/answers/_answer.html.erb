@@ -1,9 +1,8 @@
-<p>
-  <strong>Title:</strong>
-  <%= answer.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= answer.content %>
-</p><br>
+<tr>
+  <td>
+    <%= answer.votes %>
+    <%= link_to "Up", upvote_question_answer_path(@question, answer), method: :patch %>
+    <%= link_to "Down", downvote_question_answer_path(@question, answer), method: :patch %>
+    <%= answer.content %>
+  </td>
+</tr>
