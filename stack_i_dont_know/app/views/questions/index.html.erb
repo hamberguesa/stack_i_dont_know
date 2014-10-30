@@ -4,10 +4,12 @@
   <table>
     <th>Title</th>
     <th>Content</th>
+    <th>View Question</th>
   <% @questions.each do |question| %>
     <tr>
       <td> <%= question.title %> </td>
       <td> <%= question.content %> </td>
+      <td> <%= link_to 'Show', question_path(question) %></td>
     </tr>
   <% end %>
   </table>

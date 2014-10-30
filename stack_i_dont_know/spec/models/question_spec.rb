@@ -21,6 +21,10 @@ describe Question do
     should validate_presence_of(:content)
   end
 
+  it 'has a vote default value of 0' do
+    expect(@question.vote).to eq(0)
+  end
+
   after(:each) do
     @question = nil
   end
