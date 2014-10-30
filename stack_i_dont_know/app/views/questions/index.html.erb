@@ -2,12 +2,12 @@
   <%= link_to 'Create New Question', new_question_path %>
 
   <table>
+    <th>Votes</th>
     <th>Title</th>
-    <th>Content</th>
   <% @questions.each do |question| %>
     <tr>
-      <td> <%= question.title %> </td>
-      <td> <%= question.content %> </td>
+      <td> <%= question.votes %> </td>
+      <td> <%= link_to question.title, question_path(question.id) %> </td>
     </tr>
   <% end %>
   </table>
