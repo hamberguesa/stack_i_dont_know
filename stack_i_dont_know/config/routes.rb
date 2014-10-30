@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   patch '/questions/:id/downvote' => 'questions#downvote'
 
+  patch '/questions/:question_id/answers/:id/upvote' => 'answers#upvote'
+
+  patch '/questions/:question_id/answers/:id/downvote' => 'answers#downvote'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

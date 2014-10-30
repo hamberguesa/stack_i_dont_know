@@ -3,4 +3,11 @@ class Answer < ActiveRecord::Base
 
   validates_presence_of :title, :content
 
+  def upvote
+    self.vote += 1
+  end
+
+  def downvote
+    self.vote -= 1
+  end
 end

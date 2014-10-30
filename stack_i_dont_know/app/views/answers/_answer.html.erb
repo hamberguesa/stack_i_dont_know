@@ -1,3 +1,6 @@
+<%= link_to 'Upvote', "/questions/#{answer.question_id}/answers/#{answer.id}/upvote", method: :patch %>
+<%= answer.vote %>
+<%= link_to 'Downvote', "/questions/#{answer.question_id}/answers/#{answer.id}/downvote", method: :patch %>
 <p>
   <strong>Title:</strong>
   <%= answer.title %>
