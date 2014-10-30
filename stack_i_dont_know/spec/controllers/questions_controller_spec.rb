@@ -149,6 +149,22 @@ describe QuestionsController do
         delete :destroy, :id => @question.id
       }.to change(Question, :count).by(-1)
     end
+
+    context "UPVOTE" do
+      it "increases the vote count by one" do
+        patch :upvote, id: @question.id
+        @question.reload
+        expect(@question.vote).to eq(1)
+      end
+    end
+
+    context "DOWNVOTE" do
+      it "decreases the vote count by one" do
+        patch :downvote, id: @question.id
+        @question.reload
+        expect(@question.vote).to eq(-1)
+      end
+    end
   end
 
   after(:each) do
