@@ -3,8 +3,6 @@
 </div>
 
 <div>
-  <%= link_to 'Create New Question', new_question_path %>
-
   <table>
     <th>Votes</th>
     <th>Title</th>
@@ -19,4 +17,8 @@
     </tr>
   <% end %>
   </table>
+</div>
+
+<div>
+  <%= render "form" %>
 </div>
