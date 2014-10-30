@@ -67,12 +67,14 @@ describe QuestionsController do
   context "CREATE" do
     let(:question){ post :create, question: {title: "what's up dog?", content: "how's it going?"} }
     let(:no_title_question){ post :create, question: {content: "hi"} }
+    let(:no_content_question){ post :create, question: {title: "what's up dog?"} }
+
     it "create is successful" do
       expect(question).to redirect_to :action => :show,
                                       :id => assigns(:question).id
     end
 
-    it "does not create if title is not provided" do
+    it "re-renders new form if title is not provided" do
       expect(no_title_question).to render_template :new
     end
 
@@ -80,6 +82,16 @@ describe QuestionsController do
       no_title_params = {:content => "hi"}
       expect{ Question.create(no_title_params) }.to_not change(Question, :count)
     end
+
+    it "re-renders new form if content is not provided" do
+      expect(no_content_question).to render_template :new
+    end
+
+    it "does not create a question in the DB if content is not provided" do
+      no_content_params = {:title => "what's up dog?"}
+      expect{ Question.create(no_content_params) }.to_not change(Question, :count)
+    end
+
   end
 
   context "EDIT" do
@@ -96,7 +108,7 @@ describe QuestionsController do
     it "routes /questions/:id/edit to questions#edit" do
       expect(get: "/questions/#{@question.id}/edit").to route_to(
         controller: "questions",
-        action: "edit", 
+        action: "edit",
         id: "#{@question.id}"
         )
     end
@@ -105,7 +117,7 @@ describe QuestionsController do
   context "UPDATE" do
     let(:no_title_question){ patch :update, id: @question, question: {title: "", content: @question.content} }
     let(:question){ patch :update, id: @question, question: {title: "Hello", content: "This is a test"} }
-    
+
     it "redirects to question#show if update is successful" do
       expect(question).to redirect_to :action => :show,
                                       :id => assigns(:question).id
@@ -115,7 +127,7 @@ describe QuestionsController do
       expect(no_title_question).to render_template :edit
     end
 
-    it "update is successful" do 
+    it "update is successful" do
       expect(response).to be_success
     end
 
@@ -133,7 +145,7 @@ describe QuestionsController do
 
   context "DESTROY" do
     it "deletes the question" do
-      expect{ 
+      expect{
         delete :destroy, :id => @question.id
       }.to change(Question, :count).by(-1)
     end
