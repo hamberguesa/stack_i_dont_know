@@ -6,7 +6,11 @@
     <th>Title</th>
   <% @questions.each do |question| %>
     <tr>
-      <td> <%= question.votes %> </td>
+      <td>
+        <%= question.votes %>
+        <%= link_to "Up", upvote_question_path(question), method: :patch %>
+        <%= link_to "Down", downvote_question_path(question), method: :patch %>
+      </td>
       <td> <%= link_to question.title, question_path(question.id) %> </td>
     </tr>
   <% end %>

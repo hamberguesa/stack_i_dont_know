@@ -40,6 +40,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def upvote
+    @question = Question.find(params[:id])
+    @question.increment!(:votes)
+    
+    redirect_to questions_path
+  end
+  
+  def downvote
+    @question = Question.find(params[:id])
+    @question.decrement!(:votes)
+    
+    redirect_to questions_path
+  end
+  
   private
 
   def question_params
