@@ -46,14 +46,20 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.increment!(:votes)
     
-    redirect_to questions_path
+    respond_to do |request_format|
+      request_format.html { redirect_to questions_path }
+      request_format.js {}
+    end    
   end
   
   def downvote
     @question = Question.find(params[:id])
     @question.decrement!(:votes)
     
-    redirect_to questions_path
+    respond_to do |request_format|
+      request_format.html { redirect_to questions_path }
+      request_format.js {}
+    end
   end
   
   private
