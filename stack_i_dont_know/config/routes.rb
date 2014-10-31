@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'questions#index'
 
-  patch '/questions/:id/upvote' => 'questions#upvote'
+  patch '/questions/:id/upvote' => 'questions#upvote', as: 'upvote_question'
 
-  patch '/questions/:id/downvote' => 'questions#downvote'
+  patch '/questions/:id/downvote' => 'questions#downvote', as: 'downvote_question'
 
-  patch '/questions/:question_id/answers/:id/upvote' => 'answers#upvote'
+  patch '/questions/:question_id/answers/:id/upvote' => 'answers#upvote', as: 'upvote_answer'
 
-  patch '/questions/:question_id/answers/:id/downvote' => 'answers#downvote'
+  patch '/questions/:question_id/answers/:id/downvote' => 'answers#downvote', as: 'downvote_answer'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

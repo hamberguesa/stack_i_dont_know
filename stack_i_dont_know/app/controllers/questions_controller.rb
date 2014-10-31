@@ -65,19 +65,27 @@ class QuestionsController < ApplicationController
 
   def upvote
     @question.upvote
-    if @question.save
-      redirect_to @question
-    else
-      render 'show'
+    respond_to do |format|
+      if @question.save
+        format.html { redirect_to @question }
+        format.js {}
+      else
+        format.html { render 'show' }
+        format.js {} #you need to pass something here for it to work
+      end
     end
   end
 
   def downvote
     @question.downvote
-    if @question.save
-      redirect_to @question
-    else
-      render 'show'
+    respond_to do |format|
+      if @question.save
+        format.html { redirect_to @question }
+        format.js {}
+      else
+        format.html { render 'show' }
+        format.js {}
+      end
     end
   end
 

@@ -21,8 +21,14 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.find(params[:id])
     @answer.upvote
-    if @answer.save
-      redirect_to "/questions/#{@question.id}"
+    respond_to do |format|
+      if @answer.save
+        format.html { redirect_to "/questions/#{@question.id}" }
+        format.js {}
+      else
+        format.html { render 'questions/show' }
+        format.js {}
+      end
     end
   end
 
@@ -30,8 +36,14 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.find(params[:id])
     @answer.downvote
-    if @answer.save
-      redirect_to "/questions/#{@question.id}"
+    respond_to do |format|
+      if @answer.save
+        format.html { redirect_to "/questions/#{@question.id}" }
+        format.js {}
+      else
+        format.html { render 'questions/show' }
+        format.js {}
+      end
     end
   end
 

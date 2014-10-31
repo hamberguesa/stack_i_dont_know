@@ -1,10 +1,10 @@
 <%= link_to 'HOME', questions_path %>
 <h2>Question:</h2>
-<%= link_to 'Upvote', "/questions/#{@question.id}/upvote", method: :patch %>
+<%= link_to 'Upvote', "/questions/#{@question.id}/upvote", remote: true, method: :patch %>
 
-<%= @question.vote %>
+<div id="question_vote"><%= @question.vote %></div>
 
-<%= link_to 'Downvote', "/questions/#{@question.id}/downvote", method: :patch %>
+<%= link_to 'Downvote', "/questions/#{@question.id}/downvote", remote: true, method: :patch %>
 
 <h3><%= @question.title %></h3>
 <%= @question.content %><br><br>
