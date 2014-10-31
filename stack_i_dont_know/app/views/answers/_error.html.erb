@@ -1,4 +1,4 @@
- 
+<% if @answer.errors.any? %>
   <div id="error_explanation">
     <h4><%= pluralize(@answer.errors.count, "error") %> prohibited
       this answer from being created:</h4>

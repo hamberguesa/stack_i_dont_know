@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   def create
     @questions = Question.order(votes: :desc)
     @question = Question.new(question_params)
-    
+
     respond_to do |request_format|
       if @question.save
         request_format.html { redirect_to @question }
@@ -46,23 +46,23 @@ class QuestionsController < ApplicationController
   def upvote
     @question = Question.find(params[:id])
     @question.increment!(:votes)
-    
-    respond_to do |request_format|
-      request_format.html { redirect_to questions_path }
-      request_format.js {}
-    end    
-  end
-  
-  def downvote
-    @question = Question.find(params[:id])
-    @question.decrement!(:votes)
-    
+
     respond_to do |request_format|
       request_format.html { redirect_to questions_path }
       request_format.js {}
     end
   end
-  
+
+  def downvote
+    @question = Question.find(params[:id])
+    @question.decrement!(:votes)
+
+    respond_to do |request_format|
+      request_format.html { redirect_to questions_path }
+      request_format.js {}
+    end
+  end
+
   private
 
   def question_params

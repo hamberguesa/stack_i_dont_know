@@ -1,6 +1,7 @@
 <h2>Add an Answer</h2>
 
 <%= form_for([@question, @question.answers.build], remote: true) do |f| %>
+  <%= render 'error' %>
   <p>
     <%= f.label :title %>
     <%= f.text_field :title %><br>
