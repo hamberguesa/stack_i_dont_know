@@ -1,0 +1,18 @@
+function getVotes($question) {
+  return parseInt($question.find('span.votes').text());
+};
+
+var $current_question = $('#' + '<%= @question.id %>');
+var current_question_new_votes = '<%= @question.votes %>';
+$current_question.find('span.votes').text(current_question_new_votes);
+
+var $prev_question;
+
+function prev_question_votes() {
+  $prev_question = $current_question.prev();
+  return getVotes($prev_question);
+}
+
+while (current_question_new_votes > prev_question_votes()) {
+  $current_question.insertBefore($prev_question);
+}

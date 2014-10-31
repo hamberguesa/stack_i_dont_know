@@ -1,8 +1,8 @@
 <tr>
   <td>
     <%= answer.votes %>
-    <%= link_to "Up", upvote_question_answer_path(@question, answer), method: :patch %>
-    <%= link_to "Down", downvote_question_answer_path(@question, answer), method: :patch %>
+    <%= link_to "Up", upvote_question_answer_path(@question, answer), method: :patch, remote: true %>
+    <%= link_to "Down", downvote_question_answer_path(@question, answer), method: :patch, remote: true %>
     <%= answer.content %>
   </td>
 </tr>

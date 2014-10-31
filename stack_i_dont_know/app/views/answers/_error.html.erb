@@ -1,0 +1,11 @@
+ 
+  <div id="error_explanation">
+    <h4><%= pluralize(@answer.errors.count, "error") %> prohibited
+      this answer from being created:</h4>
+    <ul>
+    <% @answer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

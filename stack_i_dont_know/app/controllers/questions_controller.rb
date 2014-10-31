@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
   def create
     @questions = Question.order(votes: :desc)
     @question = Question.new(question_params)
+    
     respond_to do |request_format|
       if @question.save
         request_format.html { redirect_to @question }

@@ -1,0 +1,11 @@
+<% if @question.errors.any? %>
+  <div id="error_explanation">
+    <h4><%= pluralize(@question.errors.count, "error") %> prohibited
+      this question from being created:</h4>
+    <ul>
+    <% @question.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
