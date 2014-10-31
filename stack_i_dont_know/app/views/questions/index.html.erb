@@ -4,7 +4,7 @@
     <th>Content</th>
     <th>View Question</th>
   <% @questions.each do |question| %>
-    <%= render 'question' %>
+    <%= render partial: 'question', locals: {:question => question} %>
   <% end %>
   </table>
   <h4> <%=@response.body %></h4>
