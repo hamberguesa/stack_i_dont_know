@@ -1,5 +1,12 @@
+require 'httparty'
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:show, :destroy, :edit, :update, :upvote, :downvote]
+
+  before_action :question_blank, only: [:new, :index]
+
+  def question_blank
+    @question = Question.new
+  end
 
   def find_question
     @question = Question.find(params[:id])
@@ -7,6 +14,12 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    # @question = Question.new
+
+    hello = ENV['HELLO']
+    password = ENV['PASSWORD']
+
+    @response = HTTParty.get('https://api.github.com/zen', :basic_auth => {:username => hello, :password => password}, :headers => {"User-Agent" => hello})
   end
 
   def show
@@ -14,15 +27,18 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    # @question = Question.new
   end
 
   def create
     @question = Question.new(question_params)
-    if @question.save
-      redirect_to @question
-    else
-      render 'new'
+    respond_to do |format|
+      if @question.save
+        format.html {redirect_to @question}
+        format.js {}
+      else
+        render 'new'
+      end
     end
   end
 
