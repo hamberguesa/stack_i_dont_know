@@ -19,4 +19,10 @@
 <div id="show_answers">
 <%= render @question.answers.order(vote: :desc) %>
 </div>
+<div class="form_comments debugger">
 <%= render partial: 'answers/new', locals: {:answer => answer } %>
+</div>
+
+<div class='markdown debugger'>
+  This will be markdown!
+</div>

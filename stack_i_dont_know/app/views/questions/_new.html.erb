@@ -1,4 +1,4 @@
-<h2>New Question</h2>
+<h2 class="text-center">New Question</h2>
 
 <%= form_for :question, remote: true do |f| %>
   <% if @question.errors.any? %>
@@ -14,15 +14,15 @@
   <% end %>
 
   <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title, :class => "move-slightly-over small_width"%><br>
+    <%= f.text_field :title, :class => "small_width"%>
   </p>
   <p>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.label :content, :class => "move-slightly-over small_width"%><br>
+    <%= f.text_area :content, :class => "small_width"%>
   </p>
   <p>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", :class => 'button secondary small_width' %>
   </p>
 <% end %>
 

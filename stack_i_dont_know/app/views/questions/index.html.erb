@@ -1,13 +1,17 @@
 <div>
-  <table>
-    <th>Title</th>
-    <th>Content</th>
-    <th>View Question</th>
-  <% @questions.each do |question| %>
-    <%= render partial: 'question', locals: {:question => question} %>
-  <% end %>
-  </table>
-  <h4> <%=@response.body %></h4>
+<h1 class="text-center ">Stack I Don't Know</h1>
+<h4 class="text-center subheader SMALL SEGMENT"> <%=@response.body %></h4>
+<!-- <h4 class="text-center subheader">We are very stacky!</h4> -->
+  <div class="center-page">
+    <table class="pricing-table">
+      <th class="text-center">Title</th>
+      <th class="text-center">Content</th>
+      <th class="text-center">View Question</th>
+    <% @questions.each do |question| %>
+      <%= render partial: 'question', locals: {:question => question} %>
+    <% end %>
+    </table>
+  </div>
 </div>
 
 <%= render 'new' %>
