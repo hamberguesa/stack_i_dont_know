@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  # before_action :authenticate_user!#, only: [:create, :upvote, :downvote]
   def new
     @answer = Answer.new
   end

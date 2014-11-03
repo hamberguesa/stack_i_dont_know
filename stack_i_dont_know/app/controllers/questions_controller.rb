@@ -1,6 +1,7 @@
 require 'httparty'
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:show, :destroy, :edit, :update, :upvote, :downvote]
+  before_action :authenticate_user!
 
   before_action :question_blank, only: [:new, :index]
 
