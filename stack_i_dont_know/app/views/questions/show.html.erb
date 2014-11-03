@@ -1,21 +1,26 @@
-<%= link_to 'HOME', questions_path %>
-<h2>Question:</h2>
-<%= link_to 'Upvote', "/questions/#{@question.id}/upvote", remote: true, method: :patch %>
+<h2 class="text-center">Question:</h2>
+<div id="voting" class="inline">
+  <%= link_to "/questions/#{@question.id}/upvote", remote: true, method: :patch do%>
+    <i class="fa fa-arrow-up inline"></i>
+  <% end %>
+  <div id="question_vote" class="inline">
+    <%= @question.vote %>
+  </div>
+  <%= link_to "/questions/#{@question.id}/downvote", remote: true, method: :patch do%>
+    <i class="fa fa-arrow-down"></i>
+  <% end %>
+</div>
 
-<div id="question_vote"><%= @question.vote %></div>
-
-<%= link_to 'Downvote', "/questions/#{@question.id}/downvote", remote: true, method: :patch %>
-
-<h3><%= @question.title %></h3>
-<%= @question.content %><br><br>
-
+<h3 class="inline"><%= @question.title %></h3>
+<p><%= @question.content %></p>
+<br>
 <div>
   <%= link_to "Delete This Question", question_path(@question), method: :delete, data: { confirm: 'Are you sure?' } %>
 
 </div>
 
 <% answer = @answer %>
-<h2>Answers:</h2>
+<h2 class='text-center'>Answers:</h2>
 <div id="show_answers">
 <%= render @question.answers.order(vote: :desc) %>
 </div>
@@ -23,6 +28,6 @@
 <%= render partial: 'answers/new', locals: {:answer => answer } %>
 </div>
 
-<div class='markdown debugger'>
+<!-- <div class='markdown debugger'>
   This will be markdown!
-</div>
+</div> -->
